@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Git, choć nie wymaga właściwie żadnych umiejętności programistycznych, wciąż pozostaje narzędziem typowo deweloperskim. A trochę szkoda, bo po przebrnięciu przez trudne początki pracy z Git-em, jego s">
+<meta name="keywords" content="git,kontrola wersji">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Czym jest Git? Wstęp do pracy z systemem kontroli wersji.">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/index.html">
+<meta property="og:site_name" content="UXDev">
+<meta property="og:description" content="Git, choć nie wymaga właściwie żadnych umiejętności programistycznych, wciąż pozostaje narzędziem typowo deweloperskim. A trochę szkoda, bo po przebrnięciu przez trudne początki pracy z Git-em, jego s">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-07T07:38:12.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Czym jest Git? Wstęp do pracy z systemem kontroli wersji.">
+<meta name="twitter:description" content="Git, choć nie wymaga właściwie żadnych umiejętności programistycznych, wciąż pozostaje narzędziem typowo deweloperskim. A trochę szkoda, bo po przebrnięciu przez trudne początki pracy z Git-em, jego s">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/blog/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/blog/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Czym jest Git? Wstęp do pracy z systemem kontroli wersji.</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/blog/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/blog/2018/09/03/Test/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&text=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&is_video=false&description=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Czym jest Git? Wstęp do pracy z systemem kontroli wersji.&body=Check out this article: http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&name=Czym jest Git? Wstęp do pracy z systemem kontroli wersji.&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-jak-to-dziala"><span class="toc-number">1.</span> <span class="toc-text">Git - jak to działa?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow"><span class="toc-number">2.</span> <span class="toc-text">Workflow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Korzysci-z-prowadzenia-projektow-na-Git-cie"><span class="toc-number">3.</span> <span class="toc-text">Korzyści z prowadzenia projektów na Git-cie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gdzie-zalozyc-repozytorium"><span class="toc-number">4.</span> <span class="toc-text">Gdzie założyć repozytorium?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Co-przechowywac-w-repo"><span class="toc-number">5.</span> <span class="toc-text">Co przechowywać w repo?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kilka-slow-na-koniec"><span class="toc-number">6.</span> <span class="toc-text">Kilka słów na koniec</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Czym jest Git? Wstęp do pracy z systemem kontroli wersji.
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">UXDev</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-09-05T07:00:00.000Z" itemprop="datePublished">2018-09-05</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/blog/tags/git/">git</a>, <a class="tag-link" href="/blog/tags/kontrola-wersji/">kontrola wersji</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>Git, choć nie wymaga właściwie żadnych umiejętności programistycznych, wciąż pozostaje narzędziem typowo deweloperskim. A trochę szkoda, bo po przebrnięciu przez trudne początki pracy z Git-em, jego stosowanie może oszczędzić nam sporo pracy i nerwów. Czym zatem jest Git?</strong></p>
+<p>Wyobraźmy sobie sytuację, w której musimy przygotować dokument tekstowy, przeznaczony do druku. Zanim jednak go wydrukujemy, chcemy, aby został sprawdzony pod względem poprawności językowej przez inną osobę. Nawet jeśli piszemy składnie i ortografia nam nie straszna, są spore szanse na to, że zostanie nam zwrócony dokument z poprawkami. Mamy więc teraz już dwa dokumenty. Niech do tego dojdą nasze osobiste poprawki, które bez zastanowienia dodaliśmy do kopii wersji jeszcze niesprawdzonej. W efekcie mamy trzy wersje dokumentu, żadna z nich nie jest nadającą się do druku wersją ostateczną. Przykład z życia wzięty, prawda?</p>
+<p><strong>mój_plik-nowy.doc</strong></p>
+<p><strong>mój_plik-nowszy.doc</strong></p>
+<p><strong>mój_plik-nowy-korekta-wersja2.doc … :’(</strong></p>
+<p>Jak bardzo sprawa się skomplikuje, jeśli nad edycją dokumentu pracuje cały zespół osób? Bardzo. Pierwszy napotkany problem - w danym momencie nad jednym dokumentem może pracować <strong>tylko jedna osoba</strong>. Dodatkowo, po zakończonej edycji każdy musi pamiętać, aby poinformować o wprowadzeniu zmian kolejnego edytora dokumentu i przekazać mu aktualną wersję pliku. Nawet nie myślmy o tych wiecznie ginących pendrive’ach i plikach nazywanych w stylu super-hiper-wersja-finalna-pliku-xxx-do-druku.doc. Każdy błąd w komunikacji zespołu ma co najmniej jeden zły skutek - wiele niespójnych wersji, brak wersji finalnej. Na szczęście - jest Git.</p>
+<h2 id="Git-jak-to-dziala"><a href="#Git-jak-to-dziala" class="headerlink" title="Git - jak to działa?"></a>Git - jak to działa?</h2><p>Git likwiduje problem wielu wersji pliku w zarodku, zapewniając nam system do ich kontroli. Pracujemy z <strong>repozytorium</strong> (skrótowo <strong>repo</strong>) - lokalnym (tym na naszym komputerze) oraz zdalnym (postawionym na platformie wspierającej kontrolę wersji). <strong>Repozytorium zdalne</strong> jest miejscem, gdzie trzymane są wersje dokumentów oficjalnie uznawane za <strong>aktualne</strong>, wszystkie inne wersje są nieaktualne. Każdy członek projektu ma na własnym komputerze <strong>repozytorium lokalne</strong>, które jest podpięte do zdalnego. Zmiany dokonywane lokalnie nabierają znaczenia dopiero po opublikowaniu ich w repozytorium zdalnym. Prostymi słowami - to, co robimy z plikami na własnym komputerze nie ma znaczenia, dopóki nie publikujemy ich w repozytorium zdalnym. Jednocześnie wszystkie zmiany wprowadzone lokalnie mogą zostać opublikowane, jeśli tego chcemy.</p>
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><p>W projektach zarządzanych Git-em obowiązuje flow: pobierasz najnowszą wersję pliku ze zdalnego repozytorium, edytujesz, a kiedy uznasz, że zmiany przez Ciebie wprowadzone powinny być dodane do pliku na stałe - wysyłasz plik na zdalne repozytorium (to w skrócie). Tam wszyscy już będą mogli zobaczyć wyraźnie zaznaczone różnice w najnowszej wersji (tej wysłanej przez Ciebie), porównanej do tej przed Twoimi zmianami. Oczywiście ważna będzie tylko ta ostatnia, wysłana przez Ciebie (przynajmniej do momentu, aż ktoś ją nadpisze). Za sprawą śledzenia przez Git całej historii zdarzeń, wszystkie akcje przeprowadzane na Gicie (może poza reset hard-em ;]) można cofnąć, każdą wersję pliku można odzyskać.</p>
+<p>Wszystko idzie gładko, dopóki zmiany w plikach zachodzą liniowo - jedne zmiany wchodzą po innych. Problem zaczyna się wtedy, kiedy dwóch edytorów wprowadzi zmiany w tej samej linijce, lub jeden usunie linię, którą inny edytuje (w tej samej wersji pliku). Powstają wtedy tzw. <strong>konflikty</strong>, które się rozwiązuje. Jest to temat na osobny artykuł, a na chwilę obecną niech wystarczy nam fakt, że nie jest to sytuacja bez wyjścia. Tak więc, pomimo, że Git nie rozwiązuje pewnych problemów sam, to i tak znacznie ułatwia ogarnięcie chaosu wokół tworzenia wszelkiego rodzaju dokumentów tekstowych. A teraz - przyjrzyjmy się na moment gdzie i co możemy przechowywać z pomocą Git-a. </p>
+<h2 id="Korzysci-z-prowadzenia-projektow-na-Git-cie"><a href="#Korzysci-z-prowadzenia-projektow-na-Git-cie" class="headerlink" title="Korzyści z prowadzenia projektów na Git-cie"></a>Korzyści z prowadzenia projektów na Git-cie</h2><ol>
+<li>Spójność projektu.</li>
+<li>Wiemy, kto i kiedy wprowadził zmiany. </li>
+<li>W przypadku plików tekstowych - wiemy dokładnie, jakie zmiany zostały wprowadzone.</li>
+<li>Możemy odzyskać dowolną wersję dokumentu z historii Git-a.</li>
+</ol>
+<h2 id="Gdzie-zalozyc-repozytorium"><a href="#Gdzie-zalozyc-repozytorium" class="headerlink" title="Gdzie założyć repozytorium?"></a>Gdzie założyć repozytorium?</h2><p>Najbardziej popularną platformą wspierającą kontrolę wersji jest <strong><a href="https://github.com/" target="_blank" rel="noopener">Github</a></strong>. Inny godny polecenia produkt to <strong><a href="https://bitbucket.org/" target="_blank" rel="noopener">Bitbucket</a></strong> Atlassian’a. Zaletą pierwszego z nich jest popularność - wszystkie projekty open source, z jakimi się do tej pory spotkałam, były tworzone na Githubie. Małym minusem jest to, że za prywatne repozytorium musimy tutaj zapłacić. Bitbucket mogę polecić ze względu na darmowe, choć z pewnymi ograniczeniami, prywatne repozytoria. Taka opcja jest bardzo korzystna, jeśli dopiero uczymy się korzystać z Git’a i zależy nam na prywatnym repo bez opłat. Tym, którzy nie boją się iść na całość, polecam darmowe, publiczne repo na Githubie.</p>
+<h2 id="Co-przechowywac-w-repo"><a href="#Co-przechowywac-w-repo" class="headerlink" title="Co przechowywać w repo?"></a>Co przechowywać w repo?</h2><p>W repozytorium możemy umieszczać pliki wszelkiego rodzaju, ale musimy pamiętać o jednym - Git jest w stanie śledzić zmiany tylko w plikach tekstowych. Dla wyjaśnienia - pliki tworzone w Microsoft Word (oraz jakiejkolwiek innej aplikacji do edycji tekstu, poza zwykłym notatnikiem) <strong>nie są plikami tekstowymi</strong> w tym kontekście i Git nie będzie mógł śledzić zmian w tego rodzaju plikach. Pliki <strong>HTML</strong> lub <strong>markdown</strong> (plik tekstowy bez formatowania) spełniają te wymagania. Jak to jest z grafikami? W przypadku map bitowych - grafik w formatach <strong>.jpg/.png/.ttf</strong> - wersjonowanie jest utrudnione. Git nie jest w stanie wykryć różnic między dwoma grafikami rastrowymi. Nie oznacza to jednak, że nie warto wykorzystywać repozytorium do przechowywania tego rodzaju plików. Każde uaktualnienie pliku rastrowego będzie po prostu widoczne jako nowe załadowanie tego pliku. I choć dokładne różnice nie będą wyszczególnione, to będzie wiadomo kto i kiedy dokonał zmian.<br>Omówiliśmy już pliki rastrowe, a co z wektorowymi? </p>
+<p>Grafika wektorowa (<strong>.svg</strong>) jest bardzo ciekawym przypadkiem grafiki, a jedną spośród wielu jej zalet jest to, że obraz wektorowy jest w zasadzie plikiem tekstowym. Dlatego też Git “widzi” różnice między dwoma plikami wektorowymi. Dla mnie jest to jeden z mocnych argumentów przemawiających za tym, aby stosować grafikę wektorową tam, gdzie tylko jest to możliwe. </p>
+<h2 id="Kilka-slow-na-koniec"><a href="#Kilka-slow-na-koniec" class="headerlink" title="Kilka słów na koniec"></a>Kilka słów na koniec</h2><ol>
+<li>System kontroli wersji to pojęcie szersze niż tylko Git. Jest kilka systemów wspierających wersjonowanie, a Git jednym z nich.</li>
+<li>Prowadzenie projektu na Git-cie zapewnia nam dane: kto i kiedy tworzył zmiany w repozytorium, a w przypadku plików śledzonych przez Git zaznaczy dokładne zmiany (na zielono - co dodano, na czerwono - co usunięto, brak oznaczenia oznacza brak zmian).</li>
+<li>Trzymanie projektu w repozyrorium publicznym oznacza, że <strong>każdy</strong> ma do nich dostęp. Jeśli chcemy chronić nasze pliki, to tylko w repo <strong>prywatnym</strong>.</li>
+<li>Do używania Git-a potrzebny jest w zasadzie tylko Internet. Do pisania komend Git-owych można używać <strong>wiersza polecenia</strong> (<strong>terminal</strong>), ale można też stosować aplikacje pośredniczące (np. <strong><a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">Sourcetree</a></strong>).</li>
+<li>Więcej o systemie znajdziemy na oficjalnej stronie <strong><a href="https://git-scm.com/" target="_blank" rel="noopener">Git-a</a></strong>. Po instrukcje instalacji oraz stawiania pierwszego projektu zapraszam do kolejnego posta w tematyce Git.</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-jak-to-dziala"><span class="toc-number">1.</span> <span class="toc-text">Git - jak to działa?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow"><span class="toc-number">2.</span> <span class="toc-text">Workflow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Korzysci-z-prowadzenia-projektow-na-Git-cie"><span class="toc-number">3.</span> <span class="toc-text">Korzyści z prowadzenia projektów na Git-cie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gdzie-zalozyc-repozytorium"><span class="toc-number">4.</span> <span class="toc-text">Gdzie założyć repozytorium?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Co-przechowywac-w-repo"><span class="toc-number">5.</span> <span class="toc-text">Co przechowywać w repo?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kilka-slow-na-koniec"><span class="toc-number">6.</span> <span class="toc-text">Kilka słów na koniec</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&text=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&is_video=false&description=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Czym jest Git? Wstęp do pracy z systemem kontroli wersji.&body=Check out this article: http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&title=Czym jest Git? Wstęp do pracy z systemem kontroli wersji."><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/09/05/Czym-jest-Git-Wstep-do-pracy-z-systemem-kontroli-wersji/&name=Czym jest Git? Wstęp do pracy z systemem kontroli wersji.&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 kmalec
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/blog/">Home</a></li>
+         
+          <li><a href="/blog/about/">About</a></li>
+         
+          <li><a href="/blog/posts/">Writing</a></li>
+         
+          <li><a href="http://github.com/sergodeeva">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/blog/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/blog/lib/jquery/jquery.min.js"></script>
+<script src="/blog/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/blog/js/main.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-37473492-6', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+

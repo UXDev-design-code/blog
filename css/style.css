@@ -1006,7 +1006,7 @@ body {
   content: "";
 }
 #socialinfo li:nth-last-child(2):after {
-  content: " and ";
+  content: " oraz ";
 }
 .post-list {
   padding: 0;

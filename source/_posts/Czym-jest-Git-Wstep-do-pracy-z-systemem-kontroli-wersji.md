@@ -4,8 +4,10 @@ date: 2018-09-07 09:00:00
 tags: 
 - git
 - kontrola wersji
-category:
+categories:
 - programowanie
+- kontrola wersji
+- git
 ---
 
 **Git, choć nie wymaga właściwie żadnych umiejętności programistycznych, wciąż pozostaje narzędziem typowo deweloperskim. A trochę szkoda, bo po przebrnięciu przez trudne początki pracy z Git-em, jego stosowanie może oszczędzić nam sporo pracy i nerwów. Czym zatem jest Git?**

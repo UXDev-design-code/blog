@@ -1,10 +1,9 @@
 nav:
-  Home: /
-  About: /about/
-  Writing: /posts/
-  Projects: http://github.com/sergodeeva
+  Blog: /
+  Znajdź: /Search/
+  Projekty: https://github.com/uxdev18
 
-projects_url: http://github.com/sergodeeva
+projects_url: https://github.com/uxdev18
 
 customize:
     gravatar:
@@ -28,7 +27,7 @@ customize:
         gravator: false
     social_links:
         github: http://github.com/sergodeeva
-        facebook: /
+        facebook: https://www.facebook.com/UXDev-632230233806743/
         linkedin: https://www.linkedin.com/in/natalyakosenko/
     show_all_posts: false
     post_count: 10

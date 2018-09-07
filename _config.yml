@@ -4,8 +4,8 @@
 
 # Site
 title: UXDev
-subtitle:
-description:
+subtitle: UXDev
+description: Projektowanie z programowaniem - blog edukacyjny projektu UXDev.
 keywords:
 author: kmalec
 language:
@@ -27,6 +27,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+search: true
 
 # Writing
 new_post_name: :title.md # File name of new posts

@@ -26,9 +26,9 @@ customize:
         url: /images/apple-touch-icon.png
         gravator: false
     social_links:
-        github: http://github.com/sergodeeva
+        github: https://github.com/uxdev18
         facebook: https://www.facebook.com/UXDev-632230233806743/
-        linkedin: https://www.linkedin.com/in/natalyakosenko/
+        linkedin: https://www.linkedin.com/company/18203924
     show_all_posts: false
     post_count: 10
     highlight: pojoaque
